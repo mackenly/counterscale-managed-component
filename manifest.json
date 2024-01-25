@@ -1,0 +1,7 @@
+{
+  "name": "Counterscale",
+  "namespace": "counterscale",
+  "description": "A managed component for sending analytics data to Counterscale",
+  "icon": "assets/icon.svg",
+  "permissions": {}
+}

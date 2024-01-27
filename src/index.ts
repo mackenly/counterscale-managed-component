@@ -7,24 +7,20 @@ interface Params {
   r: string // referer
 }
 
-export default async function (manager: Manager, _settings: ComponentSettings) {
+export default async function (manager: Manager, settings: ComponentSettings) {
   manager.addEventListener('pageview', async event => {
     const { client } = event
-    console.log('Hello server!')
 
     // last time seen for session and new visitor calculation
     const lastTimeSeen: string =
-      client.get('if_modified_since') || Date.now().toString()
-    const currentTime = Date.now()
+      client.get('if_modified_since') || new Date().toUTCString()
+    const currentTime = new Date().toUTCString()
     client.set('if_modified_since', currentTime.toString(), {
       scope: 'infinite',
     })
 
-    // site id and api hostname
-    const { siteId, hostname } = _settings
-
     const paramData: Params = {
-      sid: siteId || client.url.hostname,
+      sid: settings.siteId || client.url.hostname,
       h: client.url.host,
       p: client.url.pathname,
       r: client.referer, // notice the different spelling
@@ -33,14 +29,27 @@ export default async function (manager: Manager, _settings: ComponentSettings) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const params = new URLSearchParams(paramData as any)
 
-    await manager.fetch(`${hostname}/collect?${params.toString()}`, {
-      method: 'POST',
-      headers: {
-        'user-agent': client.userAgent,
-        'if-modified-since': lastTimeSeen,
-      },
-    })
+    // make sure apiBaseUrl ends with a slash
+    let apiUrl = settings.apiBaseUrl
+    if (!apiUrl.endsWith('/')) {
+      apiUrl += '/'
+    }
+    apiUrl += `collect?${params.toString()}`
 
-    event.client.execute("console.log('Hello browser')")
+    await manager
+      .fetch(`${apiUrl}`, {
+        method: 'POST',
+        headers: {
+          'user-agent': client.userAgent,
+          'if-modified-since': lastTimeSeen,
+        },
+      })
+      .then(res => res.text())
+      .then(test => {
+        console.log('text', test)
+      })
+      .catch(err => {
+        console.log('err', err)
+      })
   })
 }

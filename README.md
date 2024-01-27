@@ -32,7 +32,8 @@ If using Cloudflare Zaraz: [Custom MC docs](https://developers.cloudflare.com/za
 
 ### Human Readable Field Name `type` _required_
 
-`field_id` give it a short description and send to a more detailed reference [Find more about how to create your own Managed Component](https://managedcomponents.dev/).-->
+`field_id` give it a short description and send to a more detailed reference [Find more about how to create your own Managed Component](https://managedcomponents.dev/).
+-->
 
 ## 📝 License
 

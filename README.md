@@ -1,4 +1,6 @@
 # Counterscale Managed Component
+[![Run Tests](https://github.com/mackenly/counterscale-managed-component/actions/workflows/tests.yml/badge.svg)](https://github.com/mackenly/counterscale-managed-component/actions/workflows/tests.yml)
+[![Run Linter](https://github.com/mackenly/counterscale-managed-component/actions/workflows/lint.yml/badge.svg)](https://github.com/mackenly/counterscale-managed-component/actions/workflows/lint.yml)
 [![Released under the Apache license.](https://img.shields.io/badge/license-apache-blue.svg)](./LICENSE)
 [![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)

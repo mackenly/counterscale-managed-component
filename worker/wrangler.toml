@@ -1,0 +1,7 @@
+name = "custom-mc-counterscale-test-1"
+main = "src/index.ts"
+compatibility_date = "2022-10-06"
+
+[[services]]
+binding = "counterscale_worker"
+service = "counterscale"

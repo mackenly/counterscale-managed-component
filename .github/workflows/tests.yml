@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  test:
+  mc-test:
     name: Run Tests for managed component
     runs-on: ubuntu-latest
 
@@ -28,4 +28,25 @@ jobs:
 
     - name: Run tests
       working-directory: ./mc
+      run: npm test
+
+  worker-test:
+    name: Run Tests for worker
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      working-directory: ./worker
+      run: npm ci
+
+    - name: Run tests
+      working-directory: ./worker
       run: npm test

@@ -1,0 +1,40 @@
+name: Deploy to Zaraz via Worker
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deplyo:
+    name: Deploy to Zaraz via Worker
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies for mc
+      working-directory: ./mc
+      run: npm ci
+
+    - name: Build
+      working-directory: ./mc
+      run: npm run build
+
+    - name: Copy file
+      run: |
+        cp ./mc/dist/index.js ./worker/src/component.js
+
+    - name: Install dependencies for worker
+      working-directory: ./worker
+      run: npm ci
+
+    - name: Deploy Worker
+      working-directory: ./worker
+      run: npm run deploy

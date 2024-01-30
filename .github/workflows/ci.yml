@@ -9,7 +9,8 @@ on:
       - main
 
 jobs:
-  name: Lint the managed component
+  worker-lint:
+    name: Lint the managed component
     runs-on: ubuntu-latest
 
     steps:

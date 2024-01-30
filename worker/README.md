@@ -1,3 +1,6 @@
+> [!NOTE]
+> Cloned from [cloudflare/managed-component-to-cloudflare-worker](https://github.com/cloudflare/managed-component-to-cloudflare-worker). Because the npx tool does not let you pass in a custom wrangler.toml file, we need to clone this repo and modify it to our needs. It is likely that this may need to be manually updated in the future.
+
 # Managed Component To Cloudflare Worker
 
 Managed Component To Cloudflare Worker provides an easy way for using custom Managed Components with Cloudflare Zaraz, by deploying them as a Cloudflare Worker. Deployed Managed Components can be configured as Tools within [Cloudflare Zaraz](https://dash.cloudflare.com/) from the "Add new Tool" page.

@@ -12,6 +12,7 @@ jobs:
   worker-lint:
     name: Lint the managed component
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
     - name: Checkout code
@@ -33,6 +34,7 @@ jobs:
   mc-test:
     name: Run Tests for managed component
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
     - name: Checkout code
@@ -54,6 +56,7 @@ jobs:
   worker-test:
     name: Run Tests for worker
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
     - name: Checkout code

@@ -8,9 +8,10 @@ on:
       - completed
 
 jobs:
-  deplyo:
+  deploy:
     name: Deploy to Zaraz via Worker
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
     - name: Checkout code

@@ -14,7 +14,7 @@
     "ts-loader": "^9.4.1",
     "typescript": "^5.3.3",
     "vitest": "^1.2.2",
-    "wrangler": "3.17.1"
+    "wrangler": "3.25.0"
   },
   "bin": {
     "managed-component-to-cloudflare-worker": "./bin/managed-component-to-cloudflare-worker.js"

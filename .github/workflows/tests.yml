@@ -10,6 +10,7 @@ on:
 
 jobs:
   test:
+    name: Run Tests for managed component
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +23,9 @@ jobs:
         node-version: '18'
 
     - name: Install dependencies
+      working-directory: ./mc
       run: npm ci
 
     - name: Run tests
+      working-directory: ./mc
       run: npm test

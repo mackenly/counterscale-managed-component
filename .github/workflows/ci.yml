@@ -1,4 +1,4 @@
-name: Run Tests
+name: CI
 
 on:
   push:
@@ -9,6 +9,26 @@ on:
       - main
 
 jobs:
+  name: Lint the managed component
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      working-directory: ./mc
+      run: npm ci
+
+    - name: Run lint
+      working-directory: ./mc
+      run: npm run lint
+      
   mc-test:
     name: Run Tests for managed component
     runs-on: ubuntu-latest

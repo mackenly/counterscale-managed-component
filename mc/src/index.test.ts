@@ -1,5 +1,5 @@
 describe('{{ namespace }}', () => {
-  it('example test', () => {
-    expect(true).toEqual(true)
-  })
+	it('example test', () => {
+		expect(true).toEqual(true)
+	})
 })

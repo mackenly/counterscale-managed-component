@@ -12,7 +12,7 @@
 ## ⚙️ Tool Settings
 > Settings are used to configure the tool in a Component Manager config file
 
-> ![NOTE]
+> [!NOTE]
 > In Zaraz, you will need to manually add the "settings" fields making sure to use the correct field names. See the below screenshot:
 ![Tool settings screenshot](./screenshots/tool-settings-screenshot.png)
 

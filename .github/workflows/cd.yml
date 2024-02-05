@@ -30,10 +30,6 @@ jobs:
       working-directory: ./mc
       run: npm run build
 
-    - name: Copy file
-      run: |
-        cp ./mc/dist/index.js ./worker/src/component.js
-
     - name: Install dependencies for worker
       working-directory: ./worker
       run: npm ci

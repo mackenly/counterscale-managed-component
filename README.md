@@ -5,13 +5,9 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ## 📖 Documentation
-If using Cloudflare Zaraz: [Custom MC docs](https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-component/#docs-content)
+- How to deploy a custom Zaraz Managed Component: [Custom MC docs](https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-component/#docs-content)
+- The managed component assumes you have deployed [counterscale](https://github.com/benvinegar/counterscale) on the same Cloudflare Account as your MC and have left the default worker name as `counterscale`. There are no plans to support other worker names or external deployments at this time.
 
-> [!IMPORTANT]  
-> If running Counterscale on the same zone as the site running Zaraz, you will get 522 HTTP errors because of a security limitation that prevents Cloudflare Workers from making requests to the same zone. To fix this, you will need to run Counterscale on a different zone than the site running Zaraz. [Question on Cloudflare Discord](https://discord.com/channels/595317990191398933/1200687018477359124/1200689850202992681)
-
-
- 
 
 ## ⚙️ Tool Settings
 

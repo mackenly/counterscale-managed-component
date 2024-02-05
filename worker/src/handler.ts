@@ -26,7 +26,7 @@ export const handleRequest = async (
   request: Request,
   execContext: ExecutionContext,
   env: Env,
-  componentCb: (manager: Manager, settings: ComponentSettings) => void
+  componentCb: (env: Env, manager: Manager, settings: ComponentSettings) => void
 ) => {
   const context: Context = {
     component: '',
@@ -67,7 +67,7 @@ export const handleRequest = async (
     if (url.pathname === '/init') {
       const manager = new Manager(context)
       const { settings } = body as InitBody
-      await componentCb(manager, settings)
+      await componentCb(env, manager, settings)
       const { cookies, ...restOfContext } = context
       return new Response(
         JSON.stringify({
@@ -87,7 +87,7 @@ export const handleRequest = async (
 
       const manager = new Manager(context)
 
-      await componentCb(manager, settings)
+      await componentCb(env, manager, settings)
       event.client = new Client(clientData, context)
       if (isClientEvent) {
         if (Object.keys(context.clientEvents).includes(eventType)) {

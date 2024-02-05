@@ -25,4 +25,7 @@ export type internalFetch = (
 
 export type Env = {
   KV: KVNamespace
+  counterscale_worker: {
+    fetch: (url: string, init?: RequestInit) => Promise<Response>
+  }
 }

@@ -10,8 +10,7 @@ export default async function (
 		const { client } = event
 
 		// last time seen for session and new visitor calculation
-		const lastTimeSeen: string =
-			client.get('if_modified_since') || new Date().toUTCString()
+		const lastTimeSeen: string = client.get('if_modified_since') || ''
 		const currentTime = new Date().toUTCString()
 		client.set('if_modified_since', currentTime.toString(), {
 			scope: 'infinite',
@@ -41,7 +40,10 @@ export default async function (
 					'user-agent': client.userAgent,
 					'if-modified-since': lastTimeSeen,
 				},
-			})
+				cf: {
+					country: event.payload.country,
+				},
+			} as RequestInit) // Add type assertion to include 'cf' property
 			.then(res => res.text())
 			.then(text => {
 				console.log('text', text)

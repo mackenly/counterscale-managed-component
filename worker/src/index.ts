@@ -1,4 +1,4 @@
-import component from './component.js'
+import component from '../../mc/dist/index'
 import { handleRequest } from './handler'
 import { Env } from './models'
 

@@ -1,4 +1,4 @@
-name = "custom-mc-counterscale-test-1"
+name = "custom-mc-counterscale"
 main = "src/index.ts"
 compatibility_date = "2022-10-06"
 

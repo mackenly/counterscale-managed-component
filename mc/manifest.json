@@ -3,6 +3,7 @@
   "namespace": "counterscale",
   "description": "A managed component for sending analytics data to Counterscale",
   "icon": "assets/counterscale-logo-300x300.webp",
+  "allowCustomFields": true,
   "permissions": {
     "access_client_kv": {
       "description": "Provides permission to set last visited time in client KV",

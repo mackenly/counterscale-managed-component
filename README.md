@@ -33,7 +33,7 @@
 
 ### Country `string` _optional_
 
-`country` is the country of the visitor. It is used to track the location of the visitor. It is optional and if not provided, the location will not be tracked. The country should be sent in each event action as a custom field called `country`. In Zaraz, use the ["Country code" property](https://developers.cloudflare.com/zaraz/reference/properties-reference/) which passes the user's country code to the action.
+`country` is the country of the visitor. It is used to track the location of the visitor. It is optional and if not provided, the location will not be tracked. The country should be sent in each event action as a custom field called `country`. In Zaraz, use the ["Country code" property](https://developers.cloudflare.com/zaraz/reference/properties-reference/), which passes the user's country code to the action.
 
 ## ⚒️ Building and Deploying
 ### Manually

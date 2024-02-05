@@ -10,8 +10,11 @@
 
 
 ## ⚙️ Tool Settings
-
 > Settings are used to configure the tool in a Component Manager config file
+
+> ![NOTE]
+> In Zaraz, you will need to manually add the "settings" fields making sure to use the correct field names. See the below screenshot:
+![Tool settings screenshot](./screenshots/tool-settings-screenshot.png)
 
 ### Site ID `string` _required_
 
@@ -19,18 +22,10 @@
 
 ### API Base URL `string` _required_
 
-`apiBaseUrl` is the base URL of the Counterscale API. If you have Counterscale on its own domain it may look like `https://stats.example.com/`. If you have Counterscale on a route of your own domain it may look like `https://example.com/api/counterscale/`. Either way, the URL should point to the Counterscale API with the `collect` endpoint.
-
-<!--## 🧱 Fields Description
-
-> Fields are properties that can/must be sent with certain events
-
-### Human Readable Field Name `type` _required_
-
-`field_id` give it a short description and send to a more detailed reference [Find more about how to create your own Managed Component](https://managedcomponents.dev/).
--->
+`apiBaseUrl` is the base URL of the Counterscale API. If you have Counterscale on its own domain it may look like `https://stats.example.com/`. If you have Counterscale on a route of your domain it may look like `https://example.com/api/counterscale/`. Either way, the URL should point to the Counterscale API with the `collect` endpoint.
 
 ## ⚒️ Building and Deploying
+### With Actions
 CI/CD GitHub Actions are setup to automate the build and deploy process. You will need to complete the following steps [based on the Workers docs](https://developers.cloudflare.com/workers/wrangler/ci-cd) to get it setup:
 - Create an Actions secret called `CLOUDFLARE_API_TOKEN` with a Cloudflare API token that has permission to edit Workers (use the `Edit Workers` template)
 - Create an Actions secret called `CLOUDFLARE_ACCOUNT_ID` with your Cloudflare account ID

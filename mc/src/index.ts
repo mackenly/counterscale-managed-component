@@ -1,19 +1,5 @@
 import { ComponentSettings, Manager } from '@managed-components/types'
-import { KVNamespace } from '@cloudflare/workers-types'
-
-interface Params {
-	sid: string // site id
-	h: string // host
-	p: string // pathname
-	r: string // referer
-}
-
-type Env = {
-	KV: KVNamespace
-	counterscale_worker: {
-		fetch: (url: string, init?: RequestInit) => Promise<Response>
-	}
-}
+import { Env, Params } from './types'
 
 export default async function (
 	env: Env,
@@ -57,8 +43,8 @@ export default async function (
 				},
 			})
 			.then(res => res.text())
-			.then(test => {
-				console.log('text', test)
+			.then(text => {
+				console.log('text', text)
 			})
 			.catch(err => {
 				console.log('err', err)

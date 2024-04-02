@@ -1,14 +1,13 @@
-import { ComponentSettings, Manager } from '@managed-components/types'
-import { KVNamespace } from '@cloudflare/workers-types'
+import {
+	ComponentSettings,
+	Manager as OriginalManager,
+} from '@managed-components/types'
 
-declare module '@managed-components/types' {
-	interface Manager {
-		ext: {
-			env: {
-				KV: KVNamespace
-				counterscale_worker: {
-					fetch: (url: string, init?: RequestInit) => Promise<Response>
-				}
+interface Manager extends OriginalManager {
+	ext: {
+		env: {
+			counterscale_worker: {
+				fetch: (url: string, init?: RequestInit) => Promise<Response>
 			}
 		}
 	}
@@ -49,7 +48,7 @@ export default async function (manager: Manager, settings: ComponentSettings) {
 		}
 		apiUrl += `collect?${params.toString()}`
 
-		await manager.ext.env.counterscale_worker
+		await manager?.ext?.env.counterscale_worker
 			.fetch(`${apiUrl}`, {
 				method: 'POST',
 				headers: {

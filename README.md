@@ -39,18 +39,21 @@
 `country` is the country of the visitor. It is used to track the location of the visitor. It is optional and if not provided, the location will not be tracked. The country should be sent in each event action as a custom field called `country`. In Zaraz, use the ["Country code" property](https://developers.cloudflare.com/zaraz/reference/properties-reference/), which passes the user's country code to the action.
 
 ## ⚒️ Building and Deploying
-### Manually
-1. Clone the repo and change into the `worker` directory
-2. Run `npm run deploy` to build and deploy the worker to your Cloudflare account
+### Manually (Best for most users)
+1. Clone the repo and enter the `mc` directory
+2. Run `npm install` to install dependencies
+3. Run `npm run build` to build the Managed Component
+4. Go back to the root directory by running `cd ..`
+5. Run `npx managed-component-to-cloudflare-worker ./mc/dist/index.js custom-mc-counterscale ./wrangler.toml` to package and deploy the worker to your Cloudflare account
 
-### With Actions
+### With Actions (Best for advanced users)
 CI/CD GitHub Actions are set up to automate the build and deploy process. You will need to complete the following steps [based on the Workers docs](https://developers.cloudflare.com/workers/wrangler/ci-cd):
 - Create an Actions secret called `CLOUDFLARE_API_TOKEN` with a Cloudflare API token that has permission to edit Workers (use the `Edit Workers` template)
 - Create an Actions secret called `CLOUDFLARE_ACCOUNT_ID` with your Cloudflare account ID
 
 ## 🏗️ Development and Contributing
-- There are two main directories in this repo: `mc` and `worker`. The `mc` directory contains the Zaraz Managed Component code and the `worker` directory contains the Cloudflare Worker code. The Worker code is a modified template from the [cloudflare/managed-component-to-cloudflare-worker](https://github.com/cloudflare/managed-component-to-cloudflare-worker) tool. Modifications are necessary to support a custom wrangler.toml and env access.
-- To test or deploy first run `npm run build` in the `mc` directory, which will create the `dist/index.js` used by the Worker in the `worker` directory. Now in the `worker` directory, run `npm run deploy` to deploy the Worker to your Cloudflare account using Wrangler.
+- The `mc` directory contains the Zaraz Managed Component code.
+- To test or deploy first run `npm run build` in the `mc` directory, which will create the `dist/index.js` used by the packaging script deploy the Worker to your Cloudflare account using Wrangler.
 
 ## 📝 License
 

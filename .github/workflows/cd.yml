@@ -30,13 +30,17 @@ jobs:
       working-directory: ./mc
       run: npm run build
 
-    - name: Install dependencies for worker
-      working-directory: ./worker
-      run: npm ci
+    - name: Check for API Token
+      if: env.CLOUDFLARE_API_TOKEN == null
+      run: |
+        echo "CLOUDFLARE_API_TOKEN is not set"
+        exit 1
 
-    - name: Build & Deploy Worker
-      uses: cloudflare/wrangler-action@v3
-      with:
-        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        workingDirectory: ./worker
+    - name: Check for Account ID
+      if: env.CLOUDFLARE_ACCOUNT_ID == null
+      run: |
+        echo "CLOUDFLARE_ACCOUNT_ID is not set"
+        exit 1
+
+    - name: Create Worker
+      run: yes | npx managed-component-to-cloudflare-worker ./mc/dist/index.js custom-mc-counterscale ./wrangler.toml

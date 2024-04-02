@@ -12,7 +12,7 @@ jobs:
   worker-lint:
     name: Lint the managed component
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     steps:
     - name: Checkout code
@@ -34,7 +34,7 @@ jobs:
   mc-test:
     name: Run Tests for managed component
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     steps:
     - name: Checkout code
@@ -53,10 +53,10 @@ jobs:
       working-directory: ./mc
       run: npm test
 
-  worker-test:
-    name: Run Tests for worker
+  test-build:
+    name: Test Build for managed component
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     steps:
     - name: Checkout code
@@ -67,10 +67,10 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Install dependencies
-      working-directory: ./worker
+    - name: Install dependencies for mc
+      working-directory: ./mc
       run: npm ci
 
-    - name: Run tests
-      working-directory: ./worker
-      run: npm test
+    - name: Build
+      working-directory: ./mc
+      run: npm run build

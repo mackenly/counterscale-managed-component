@@ -1,11 +1,26 @@
-import { ComponentSettings, Manager } from '@managed-components/types'
-import { Env, Params } from './types'
+import {
+	ComponentSettings,
+	Manager as OriginalManager,
+} from '@managed-components/types'
 
-export default async function (
-	env: Env,
-	manager: Manager,
-	settings: ComponentSettings
-) {
+interface Manager extends OriginalManager {
+	ext: {
+		env: {
+			counterscale_worker: {
+				fetch: (url: string, init?: RequestInit) => Promise<Response>
+			}
+		}
+	}
+}
+
+interface Params {
+	sid: string // site id
+	h: string // host
+	p: string // pathname
+	r: string // referer
+}
+
+export default async function (manager: Manager, settings: ComponentSettings) {
 	manager.addEventListener('pageview', async event => {
 		const { client } = event
 
@@ -33,7 +48,7 @@ export default async function (
 		}
 		apiUrl += `collect?${params.toString()}`
 
-		await env.counterscale_worker
+		await manager?.ext?.env.counterscale_worker
 			.fetch(`${apiUrl}`, {
 				method: 'POST',
 				headers: {

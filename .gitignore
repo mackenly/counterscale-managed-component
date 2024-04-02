@@ -125,5 +125,4 @@ out
 .yarn/install-state.gz
 .pnp.*
 
-
-dist/
+/mc/dist

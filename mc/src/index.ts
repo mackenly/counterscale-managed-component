@@ -1,11 +1,27 @@
 import { ComponentSettings, Manager } from '@managed-components/types'
-import { Env, Params } from './types'
+import { KVNamespace } from '@cloudflare/workers-types'
 
-export default async function (
-	env: Env,
-	manager: Manager,
-	settings: ComponentSettings
-) {
+declare module '@managed-components/types' {
+	interface Manager {
+		ext: {
+			env: {
+				KV: KVNamespace
+				counterscale_worker: {
+					fetch: (url: string, init?: RequestInit) => Promise<Response>
+				}
+			}
+		}
+	}
+}
+
+interface Params {
+	sid: string // site id
+	h: string // host
+	p: string // pathname
+	r: string // referer
+}
+
+export default async function (manager: Manager, settings: ComponentSettings) {
 	manager.addEventListener('pageview', async event => {
 		const { client } = event
 
@@ -33,7 +49,7 @@ export default async function (
 		}
 		apiUrl += `collect?${params.toString()}`
 
-		await env.counterscale_worker
+		await manager.ext.env.counterscale_worker
 			.fetch(`${apiUrl}`, {
 				method: 'POST',
 				headers: {

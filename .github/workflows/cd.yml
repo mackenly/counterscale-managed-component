@@ -30,17 +30,8 @@ jobs:
       working-directory: ./mc
       run: npm run build
 
-    - name: Check for API Token
-      if: env.CLOUDFLARE_API_TOKEN == null
-      run: |
-        echo "CLOUDFLARE_API_TOKEN is not set"
-        exit 1
-
-    - name: Check for Account ID
-      if: env.CLOUDFLARE_ACCOUNT_ID == null
-      run: |
-        echo "CLOUDFLARE_ACCOUNT_ID is not set"
-        exit 1
-
     - name: Create Worker
+      env:
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       run: yes | npx managed-component-to-cloudflare-worker ./mc/dist/index.js custom-mc-counterscale ./wrangler.toml

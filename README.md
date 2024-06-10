@@ -53,8 +53,8 @@ CI/CD GitHub Actions are set up to automate the build and deploy process. You wi
 
 ## 🏗️ Development and Contributing
 - The `mc` directory contains the Zaraz Managed Component code.
-- To test or deploy first run `npm run build` in the `mc` directory, which will create the `dist/index.js` used by the packaging script deploy the Worker to your Cloudflare account using Wrangler.
+- To test or deploy, first run `npm` run build` in the `mc` directory, which will create the `dist/index.js` used by the packaging script to deploy the Worker to your Cloudflare account using Wrangler.
 
 ## 📝 License
 
-Licensed under the [Apache License](./LICENSE).
+Licensed under the [MIT License](./LICENSE).

@@ -1,12 +1,18 @@
-name: CI
+name: MC CI
 
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
 
 jobs:
   worker-lint:

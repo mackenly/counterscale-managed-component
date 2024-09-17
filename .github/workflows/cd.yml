@@ -12,6 +12,7 @@ jobs:
     name: Deploy to Zaraz via Worker
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
     - name: Checkout code
@@ -41,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: deploy
-    if: github.repository_owner == 'mackenly' && github.ref == 'refs/heads/main'
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.repository_owner == 'mackenly' && github.ref == 'refs/heads/main' }}
     permissions:
       contents: write
       packages: write

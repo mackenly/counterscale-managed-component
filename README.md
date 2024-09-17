@@ -48,12 +48,12 @@
 
 ### With Actions (Best for advanced users)
 CI/CD GitHub Actions are set up to automate the build and deploy process. You will need to complete the following steps [based on the Workers docs](https://developers.cloudflare.com/workers/wrangler/ci-cd):
-- Create an Actions secret called `CLOUDFLARE_API_TOKEN` with a Cloudflare API token that has permission to edit Workers (use the `Edit Workers` template)
-- Create an Actions secret called `CLOUDFLARE_ACCOUNT_ID` with your Cloudflare account ID
+- Create an Actions secret called `CLOUDFLARE_API_TOKEN` with a [Cloudflare API token](https://dash.cloudflare.com/?to=/profile/api-tokens) that has permission to edit Workers (use the `Edit Workers` template)
+- Create an Actions secret called `CLOUDFLARE_ACCOUNT_ID` with your Cloudflare account ID (easily found [here](https://dash.cloudflare.com/?to=/:account/workers-and-pages))
 
 ## 🏗️ Development and Contributing
 - The `mc` directory contains the Zaraz Managed Component code.
-- To test or deploy, first run `npm` run build` in the `mc` directory, which will create the `dist/index.js` used by the packaging script to deploy the Worker to your Cloudflare account using Wrangler.
+- To test or deploy, first run `npm run build` in the `mc` directory, which will create the `dist/index.js` used by the packaging script to deploy the Worker to your Cloudflare account using Wrangler.
 
 ## 📝 License
 

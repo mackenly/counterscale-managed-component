@@ -29,6 +29,7 @@ module.exports = [
 				__filename: 'readonly',
 				// Custom globals
 				webcm: 'writable',
+				URLSearchParams: 'readonly',
 			},
 		},
 		plugins: {

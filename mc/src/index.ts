@@ -2,11 +2,7 @@ import {
 	ComponentSettings,
 	Manager as OriginalManager,
 } from '@managed-components/types';
-import {
-	RequestInit,
-	Response,
-	URLSearchParams,
-} from '@cloudflare/workers-types';
+import { RequestInit, Response } from '@cloudflare/workers-types';
 
 interface Manager extends OriginalManager {
 	ext: {

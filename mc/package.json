@@ -1,6 +1,6 @@
 {
   "name": "counterscale",
-  "version": "0.2.34",
+  "version": "0.2.35",
   "description": "A managed component for sending analytics data to Counterscale",
   "main": "dist/index.js",
   "scripts": {
